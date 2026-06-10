@@ -53,46 +53,4 @@ src/
 └── index.css                     # Global styles, theme, and animations
 ```
 
----
 
-## Getting Started
-
-**Prerequisites:** Node.js 20+
-
-```bash
-# Clone the repository
-git clone https://github.com/andretoyama-dev/portfolio-andretoyama.git
-cd portfolio-andretoyama
-
-# Install dependencies
-npm install
-
-# Start the development server
-npm run dev
-```
-
-The app will be available at `http://localhost:3000`.
-
-### Available Scripts
-
-| Script | Description |
-|--------|-------------|
-| `npm run dev` | Start development server on port 3000 |
-| `npm run build` | Build for production |
-| `npm run preview` | Preview the production build |
-| `npm run lint` | Run TypeScript type checking |
-| `npm run clean` | Remove the `dist/` directory |
-
----
-
-## Deployment
-
-The project is automatically deployed to GitHub Pages on every push to `main` via the [deploy workflow](.github/workflows/deploy.yml).
-
-**Custom domain:** [andretoyama-dev.com.br](https://andretoyama-dev.com.br)
-
----
-
-## License
-
-This project is open source and available for reference and learning purposes.
