@@ -26,8 +26,8 @@ import AgeCounter from './AgeCounter';
 import Equalizer from './Equalizer';
 import CarnotaurusViewer from './CarnotaurusViewer';
 
-import arcticMonkeysImg from '../assets/arctic-monkeys.webp';
-import arcticMonkeysSfx from '../assets/arctic-monkeys-sample.mp3';
+import albumCoverImg from '../assets/threedollarbill.jpg';
+import musicSfx from '../assets/leech_limp_bizkit.mp3';
 
 
 const BIRTH_DATE = new Date('2004-06-09T14:55:00');
@@ -57,7 +57,7 @@ export default function Portfolio() {
 
   useEffect(() => {
     // Preload audio immediately when component mounts to minimize latency
-    audioRef.current = new Audio(arcticMonkeysSfx);
+    audioRef.current = new Audio(musicSfx);
     audioRef.current.loop = true;
     audioRef.current.preload = 'auto';
     audioRef.current.load();
@@ -259,7 +259,7 @@ export default function Portfolio() {
       </section>
 
       {/* Carnotaurus Section */}
-      <section className="space-y-12 px-4 md:px-0 relative">
+      <section className="space-y-16 px-4 md:px-0 relative">
         <motion.div variants={itemVariants} className="flex flex-col items-center space-y-6">
           <div className="flex items-center space-x-4 w-full">
             <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-brand-red/50 to-brand-red/20"></div>
@@ -270,7 +270,7 @@ export default function Portfolio() {
             <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent via-brand-red/50 to-brand-red/20"></div>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center w-full">
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_1.3fr] gap-16 items-center w-full">
             <div className="order-2 md:order-1 space-y-6">
               <div className="space-y-4">
                 <h3 className="text-4xl md:text-5xl font-black text-white italic tracking-tighter uppercase leading-none">
@@ -327,7 +327,7 @@ export default function Portfolio() {
               aria-label={isPlaying ? "Pause music" : "Play music"}
             >
               {/* Album Cover */}
-              <img src={arcticMonkeysImg} className={`absolute inset-0 w-full h-full object-cover transition-all duration-500 ${isPlaying ? 'grayscale-0 opacity-90' : 'grayscale opacity-50'} group-hover/btn:opacity-100 group-hover/btn:grayscale-0`} alt="AM — Arctic Monkeys" />
+              <img src={albumCoverImg} className={`absolute inset-0 w-full h-full object-cover transition-all duration-500 ${isPlaying ? 'grayscale-0 opacity-90' : 'grayscale opacity-50'} group-hover/btn:opacity-100 group-hover/btn:grayscale-0`} alt="Three Dollar Bill, Y'all$ — Limp Bizkit" />
 
               {/* Dark overlay for icon visibility */}
               <div className={`absolute inset-0 bg-black/40 transition-opacity duration-300 ${isPlaying ? 'opacity-40' : 'opacity-60'} group-hover/btn:opacity-30`} />
@@ -349,11 +349,11 @@ export default function Portfolio() {
             <div className="flex-1 min-w-0 space-y-1">
               <div className="flex items-center justify-between">
                 <span className="text-[10px] text-white font-bold tracking-wider truncate uppercase block">
-                  Arctic Monkeys
+                  Limp Bizkit
                 </span>
               </div>
               <div className="text-[8px] text-gray-500 font-mono truncate uppercase block">
-                Source: AM // RECORD_VAULT
+                Source: Three Dollar Bill, Y'all$
               </div>
 
               {/* Visualizer & Bitrate */}

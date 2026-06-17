@@ -10,7 +10,7 @@ function Model({ url }: { url: string }) {
 
 export default function CarnotaurusViewer() {
   return (
-    <div className="h-[400px] md:h-[500px] w-full bg-[#050505] rounded-sm border border-white/5 relative group overflow-hidden shadow-2xl">
+    <div className="h-[500px] md:h-[600px] w-full bg-[#050505] rounded-sm border border-white/5 relative group overflow-hidden shadow-2xl">
       <div className="absolute top-4 left-4 z-20 font-mono text-[10px] text-brand-red/50 uppercase tracking-widest pointer-events-none">
         <span className="flex items-center gap-2">
           <Activity className="w-3 h-3 animate-pulse" />
