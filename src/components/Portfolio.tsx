@@ -28,7 +28,7 @@ import CarnotaurusViewer from './CarnotaurusViewer';
 
 import arcticMonkeysImg from '../assets/arctic-monkeys.webp';
 import arcticMonkeysSfx from '../assets/arctic-monkeys-sample.mp3';
-import profileImg from '../assets/profile.png';
+
 
 const BIRTH_DATE = new Date('2004-06-09T14:55:00');
 
@@ -129,8 +129,7 @@ export default function Portfolio() {
     >
       {/* Hero Section */}
       <section className="max-w-4xl mx-auto space-y-8 relative">
-        <div className="flex flex-col-reverse md:flex-row md:items-center justify-between gap-8 w-full">
-          <motion.div variants={itemVariants} className="space-y-2 group relative z-10 flex-1">
+        <motion.div variants={itemVariants} className="space-y-2 group relative z-10">
             <div className="flex items-center space-x-2 text-brand-red/50 mb-4 font-mono text-[10px] tracking-[0.3em] uppercase">
               <span className="w-8 h-[1px] bg-brand-red/30"></span>
               <span>Establish Connection // Authorized Access</span>
@@ -141,22 +140,7 @@ export default function Portfolio() {
             <p className="text-xl md:text-2xl text-gray-400 font-mono tracking-tighter">
               &gt; <span className="text-white">DevOps Engineer</span> <span className="text-brand-red/40 animate-pulse">_</span> Full-Stack Developer
             </p>
-          </motion.div>
-
-          {/* Cybernetic Profile Photo */}
-          <motion.div 
-            variants={itemVariants}
-            className="relative w-32 h-32 md:w-40 md:h-40 flex-shrink-0 mx-auto md:mx-0"
-          >
-            <div className="absolute inset-0 border border-brand-red/30 rounded-sm overflow-hidden bg-black/40 shadow-[0_0_15px_rgba(220,38,38,0.1)]">
-              <img src={profileImg} className="w-full h-full object-cover grayscale opacity-85 hover:opacity-100 hover:grayscale-0 transition-all duration-300" alt="André Toyama" />
-              <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[size:100%_4px,6px_100%] pointer-events-none opacity-30" />
-            </div>
-            {/* Cyber Corner Decos */}
-            <div className="absolute -top-1 -left-1 w-3.5 h-3.5 border-t-2 border-l-2 border-brand-red/60" />
-            <div className="absolute -bottom-1 -right-1 w-3.5 h-3.5 border-b-2 border-r-2 border-brand-red/60" />
-          </motion.div>
-        </div>
+        </motion.div>
 
         <motion.div variants={itemVariants}>
           <AgeCounter birthDate={BIRTH_DATE} />
