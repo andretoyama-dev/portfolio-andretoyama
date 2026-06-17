@@ -210,4 +210,44 @@
   .group:hover .animate-glitch {
     animation-play-state: running;
   }
+
+  /* Cyberdeck Range Slider */
+  .cyber-range {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .cyber-range::-webkit-slider-runnable-track {
+    background: rgba(255, 0, 60, 0.1);
+    height: 4px;
+    border: 1px solid rgba(255, 0, 60, 0.2);
+  }
+
+  .cyber-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    margin-top: -3px; /* Centers thumb on the track */
+    background-color: #ff003c;
+    height: 8px;
+    width: 8px;
+    border-radius: 0px;
+    box-shadow: 0 0 5px rgba(255, 0, 60, 0.8);
+  }
+
+  .cyber-range::-moz-range-track {
+    background: rgba(255, 0, 60, 0.1);
+    height: 4px;
+    border: 1px solid rgba(255, 0, 60, 0.2);
+  }
+
+  .cyber-range::-moz-range-thumb {
+    background-color: #ff003c;
+    border: none;
+    height: 8px;
+    width: 8px;
+    border-radius: 0px;
+    box-shadow: 0 0 5px rgba(255, 0, 60, 0.8);
+  }
 }

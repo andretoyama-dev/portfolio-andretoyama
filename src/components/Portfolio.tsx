@@ -54,6 +54,7 @@ export default function Portfolio() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const fadeRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [volume, setVolume] = useState(0.4);
 
   useEffect(() => {
     // Preload audio immediately when component mounts to minimize latency
@@ -70,6 +71,18 @@ export default function Portfolio() {
       }
     };
   }, []);
+
+  const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newVol = parseFloat(e.target.value);
+    setVolume(newVol);
+    if (audioRef.current) {
+      if (fadeRef.current) {
+        clearInterval(fadeRef.current);
+        fadeRef.current = null;
+      }
+      audioRef.current.volume = newVol;
+    }
+  };
 
   const togglePlay = () => {
     if (!audioRef.current) return;
@@ -97,8 +110,8 @@ export default function Portfolio() {
       setIsPlaying(true);
       audioRef.current.play().catch(e => console.log("Audio playback failed:", e));
       fadeRef.current = setInterval(() => {
-        if (audioRef.current && audioRef.current.volume < 0.4) {
-          audioRef.current.volume += 0.05;
+        if (audioRef.current && audioRef.current.volume < volume) {
+          audioRef.current.volume = Math.min(volume, audioRef.current.volume + 0.05);
         } else {
           if (fadeRef.current) clearInterval(fadeRef.current);
           fadeRef.current = null;
@@ -125,7 +138,7 @@ export default function Portfolio() {
       initial="hidden"
       animate="visible"
       variants={containerVariants}
-      className="max-w-4xl mx-auto px-4 py-12 md:py-16 space-y-24 overflow-hidden md:overflow-visible"
+      className="max-w-5xl mx-auto px-4 py-12 md:py-16 space-y-24 overflow-hidden md:overflow-visible"
     >
       {/* Hero Section */}
       <section className="max-w-4xl mx-auto space-y-8 relative">
@@ -282,13 +295,13 @@ export default function Portfolio() {
               </div>
               
               <div className="grid grid-cols-2 gap-4">
-                <div className="p-4 bg-white/5 border border-white/10 rounded-sm">
+                <div className="p-3 md:p-4 bg-white/5 border border-white/10 rounded-sm">
                   <span className="block text-[8px] font-mono text-brand-red uppercase mb-1">Max_Velocity</span>
-                  <span className="text-xl font-bold text-white tracking-widest">50 KM/H</span>
+                  <span className="text-base md:text-xl font-bold text-white tracking-wide">50 KM/H</span>
                 </div>
-                <div className="p-4 bg-white/5 border border-white/10 rounded-sm">
+                <div className="p-3 md:p-4 bg-white/5 border border-white/10 rounded-sm">
                   <span className="block text-[8px] font-mono text-brand-red uppercase mb-1">Armor_Type</span>
-                  <span className="text-xl font-bold text-white tracking-widest">OSTEODERMS</span>
+                  <span className="text-base md:text-xl font-bold text-white tracking-wide">OSTEODERMS</span>
                 </div>
               </div>
               
@@ -377,6 +390,26 @@ export default function Portfolio() {
                 </span>
               </div>
             </div>
+          </div>
+
+          {/* Volume Control Section */}
+          <div className="flex items-center space-x-2 pt-2 border-t border-brand-red/10 mt-1">
+            <Volume2 className="w-3.5 h-3.5 text-brand-red/70 flex-shrink-0" />
+            <input 
+              type="range"
+              min="0"
+              max="1"
+              step="0.05"
+              value={volume}
+              onChange={handleVolumeChange}
+              className="w-full h-1 cyber-range rounded-sm appearance-none cursor-pointer focus:outline-none focus:ring-0"
+              style={{
+                background: `linear-gradient(to right, #ff003c ${volume * 100}%, rgba(255, 0, 60, 0.1) ${volume * 100}%)`
+              }}
+            />
+            <span className="text-[8px] text-brand-red/70 font-mono w-6 text-right flex-shrink-0">
+              {Math.round(volume * 100)}%
+            </span>
           </div>
         </motion.div>
       </div>
