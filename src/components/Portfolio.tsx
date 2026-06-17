@@ -17,6 +17,7 @@ import {
   Container, 
   Layers, 
   Play, 
+  Pause,
   Volume2,
   GitBranch,
 } from 'lucide-react';
@@ -123,60 +124,81 @@ export default function Portfolio() {
       initial="hidden"
       animate="visible"
       variants={containerVariants}
-      className="max-w-[1400px] mx-auto px-6 py-12 md:py-16 space-y-24 overflow-hidden md:overflow-visible"
+      className="max-w-4xl mx-auto px-4 py-12 md:py-16 space-y-24 overflow-hidden md:overflow-visible"
     >
-      {/* System Status Bar */}
-      <div className="flex flex-wrap items-center justify-between font-mono text-[9px] tracking-[0.2em] border border-white/5 bg-black/40 px-4 py-2.5 rounded-sm text-gray-500 z-50 relative">
-        <div className="flex items-center space-x-4">
-          <span className="flex items-center gap-1.5 text-brand-red animate-pulse">
-            <span className="w-1.5 h-1.5 rounded-full bg-brand-red animate-flicker"></span>
-            [SYS_STATUS: ONLINE]
-          </span>
-          <span className="hidden sm:inline">|</span>
-          <span className="hidden sm:inline">[THREAT_LEVEL: ZERO]</span>
-          <span className="hidden sm:inline">|</span>
-          <span className="hidden sm:inline">[SEC_LEVEL: MAX]</span>
-        </div>
-        <div className="flex items-center space-x-2">
-          <span className="text-[8px] animate-pulse">HOST_LATENCY: 12ms</span>
-        </div>
-      </div>
-
       {/* Hero Section */}
       <section className="max-w-4xl mx-auto space-y-8 relative">
-        {/* Music Floating Module */}
-        <motion.button 
+        {/* Cyberdeck Audio Deck */}
+        <motion.div 
           variants={itemVariants}
-          onClick={togglePlay}
-          className="absolute -top-16 md:top-0 right-0 z-50 flex flex-col items-end space-y-3 group focus:outline-none focus-visible:ring-1 focus-visible:ring-brand-red/40 p-2"
-          aria-label={isPlaying ? "Pause background music" : "Play background music"}
+          className="absolute -top-20 md:-top-2 right-0 z-50 w-[280px] font-mono text-[10px] bg-black/90 border border-brand-red/20 p-3 rounded-sm space-y-2.5 shadow-[0_0_15px_rgba(220,38,38,0.05)] hover:border-brand-red/50 transition-all select-none"
         >
-          <div className="flex items-center space-x-3 text-brand-red opacity-50 group-hover:opacity-100 transition-opacity">
-            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-right">
-              {isPlaying ? "Resonance.Active" : "Resonance.Muted"}
+          {/* Header */}
+          <div className="flex items-center justify-between border-b border-brand-red/10 pb-1 text-[8px] text-gray-500 uppercase tracking-widest">
+            <span>System_Audio // Dev_Resonance</span>
+            <span className={isPlaying ? "text-brand-red animate-pulse" : "text-gray-600"}>
+              {isPlaying ? "● ACTIVE" : "○ MUTED"}
             </span>
-            <Volume2 className={`w-4 h-4 ${isPlaying ? 'animate-bounce' : ''}`} />
           </div>
-          
-          <div className="relative w-24 h-24 md:w-32 md:h-32 cursor-pointer">
-            <div className="absolute inset-0 bg-black border border-white/10 group-hover:border-brand-red/40 transition-all rounded-full overflow-hidden shadow-2xl">
-              <img src={arcticMonkeysImg} className="w-full h-full object-cover grayscale opacity-30 group-hover:opacity-80 group-hover:grayscale-0 transition-all duration-700" alt="Arctic Monkeys — AM album cover" />
-              <div className={`absolute inset-0 bg-black/40 flex items-center justify-center ${isPlaying ? 'opacity-100' : 'opacity-0'} group-hover:opacity-100 transition-opacity`}>
-                 <Equalizer isPlaying={isPlaying} />
+
+          {/* Main Section */}
+          <div className="flex items-center space-x-3">
+            {/* Dynamic Core Button */}
+            <button 
+              onClick={togglePlay}
+              className="relative w-12 h-12 flex items-center justify-center border border-brand-red/30 hover:border-brand-red/60 rounded-sm bg-brand-red/5 overflow-hidden group/btn focus:outline-none cursor-pointer"
+              aria-label={isPlaying ? "Pause music" : "Play music"}
+            >
+              {/* Spinning grid bg */}
+              <div className={`absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,rgba(220,38,38,0.2)_0%,transparent_70%)] ${isPlaying ? 'animate-spin-slow' : ''}`} />
+              
+              {/* Dashed outer spinner */}
+              <div className={`absolute inset-1 rounded-sm border border-dashed border-brand-red/40 ${isPlaying ? 'animate-spin-slow' : 'opacity-30'}`} />
+
+              {/* Control Icon */}
+              <div className="relative z-10 text-brand-red">
+                {isPlaying ? (
+                  <Pause className="w-4 h-4 fill-brand-red text-brand-red filter drop-shadow-[0_0_5px_rgba(220,38,38,0.8)]" />
+                ) : (
+                  <Play className="w-4 h-4 fill-brand-red text-brand-red filter drop-shadow-[0_0_5px_rgba(220,38,38,0.8)] translate-x-0.5" />
+                )}
               </div>
-              <div className={`absolute inset-0 border-2 border-brand-red/20 rounded-full ${isPlaying ? 'animate-ping' : ''}`}></div>
+            </button>
+
+            {/* Details Panel */}
+            <div className="flex-1 min-w-0 space-y-1">
+              <div className="flex items-center justify-between">
+                <span className="text-[10px] text-white font-bold tracking-wider truncate uppercase block">
+                  Arctic Monkeys
+                </span>
+              </div>
+              <div className="text-[8px] text-gray-500 font-mono truncate uppercase block">
+                Source: AM // RECORD_VAULT
+              </div>
+
+              {/* Visualizer & Bitrate */}
+              <div className="flex items-center justify-between pt-1">
+                <div className="flex items-end space-x-0.5 h-2">
+                  {[...Array(5)].map((_, i) => (
+                    <div
+                      key={i}
+                      className="w-0.5 bg-brand-red rounded-sm"
+                      style={{
+                        height: isPlaying ? '100%' : '20%',
+                        animation: isPlaying ? `bar-pulse 0.6s ease-in-out infinite` : 'none',
+                        animationDelay: `${i * 0.15}s`,
+                        boxShadow: isPlaying ? '0 0 4px rgba(220,38,38,0.6)' : 'none'
+                      }}
+                    />
+                  ))}
+                </div>
+                <span className="text-[7px] text-brand-red/50 uppercase tracking-widest font-mono">
+                  320 KBPS // 44.1KHZ
+                </span>
+              </div>
             </div>
-            <div className={`absolute -inset-2 border border-dashed border-brand-red/30 rounded-full ${isPlaying ? 'animate-spin-slow' : 'opacity-0'} transition-opacity`}></div>
-            
-            <div className="absolute -top-1 -left-1 w-3 h-3 border-t-2 border-l-2 border-brand-red/0 group-hover:border-brand-red/40 transition-all duration-500"></div>
-            <div className="absolute -bottom-1 -right-1 w-3 h-3 border-b-2 border-r-2 border-brand-red/0 group-hover:border-brand-red/40 transition-all duration-500"></div>
           </div>
-          
-          <div className="text-right mt-2">
-             <span className="font-mono text-[9px] text-white opacity-40 group-hover:opacity-100 uppercase tracking-widest block">Arctic Monkeys</span>
-             <span className="font-mono text-[7px] text-brand-red/40 uppercase block">AM // RECORD_VAULT</span>
-          </div>
-        </motion.button>
+        </motion.div>
 
         <motion.div variants={itemVariants} className="space-y-2 group relative z-10">
           <div className="flex items-center space-x-2 text-brand-red/50 mb-4 font-mono text-[10px] tracking-[0.3em] uppercase">
@@ -278,7 +300,7 @@ export default function Portfolio() {
 
           <motion.div 
             variants={itemVariants} 
-            className="cyber-border bg-black/60 p-8 rounded-sm overflow-hidden relative max-w-2xl"
+            className="cyber-border bg-black/60 p-8 rounded-sm overflow-hidden relative w-full"
           >
             <div className="absolute top-0 right-0 w-8 h-8 border-t border-r border-brand-red/20"></div>
             <div className="space-y-4 relative z-10">
