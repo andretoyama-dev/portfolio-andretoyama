@@ -8,7 +8,7 @@ function Model({ url }: { url: string }) {
   return <primitive object={scene} scale={0.005} />;
 }
 
-export default function CarnotaurusViewer({ lang }: { lang: 'en' | 'pt' }) {
+export default function CarnotaurusViewer() {
   return (
     <div className="h-[400px] md:h-[500px] w-full bg-[#050505] rounded-sm border border-white/5 relative group overflow-hidden shadow-2xl">
       <div className="absolute top-4 left-4 z-20 font-mono text-[10px] text-brand-red/50 uppercase tracking-widest pointer-events-none">
@@ -59,7 +59,7 @@ export default function CarnotaurusViewer({ lang }: { lang: 'en' | 'pt' }) {
       </Suspense>
       
       <div className="absolute bottom-4 right-4 z-20 font-mono text-[8px] text-gray-500 uppercase tracking-widest text-right pointer-events-none opacity-50">
-        {lang === 'en' ? '[ DRAG TO ROTATE // SCROLL TO ZOOM ]' : '[ ARRASTE PARA GIRAR // SCROLL PARA DAR ZOOM ]'}
+        [ DRAG TO ROTATE // SCROLL TO ZOOM ]
       </div>
       
       <div className="absolute inset-0 pointer-events-none border border-brand-red/10 scale-[0.98] z-30"></div>

@@ -1,6 +1,11 @@
+import { useState } from 'react';
+import { AnimatePresence, motion } from 'motion/react';
 import Portfolio from './components/Portfolio';
+import TerminalLoader from './components/TerminalLoader';
 
 export default function App() {
+  const [isBooted, setIsBooted] = useState(false);
+
   return (
     <main className="relative min-h-screen selection:bg-brand-red/30 selection:text-brand-red overflow-x-hidden">
       {/* Background Atmosphere */}
@@ -12,9 +17,21 @@ export default function App() {
         <div className="absolute inset-0 bg-noise opacity-[0.02] pointer-events-none" />
       </div>
 
-      <div className="relative z-10">
-        <Portfolio />
-      </div>
+      <AnimatePresence mode="wait">
+        {!isBooted ? (
+          <TerminalLoader key="loader" onComplete={() => setIsBooted(true)} />
+        ) : (
+          <motion.div
+            key="portfolio"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            className="relative z-10"
+          >
+            <Portfolio />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </main>
   );
 }

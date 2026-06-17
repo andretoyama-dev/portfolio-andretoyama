@@ -1,6 +1,6 @@
 <div align="center">
 
-# André Toyama — Portfolio
+# André Toyama
 
 **Personal developer portfolio with a cyberpunk aesthetic, interactive 3D models, and ambient music.**
 
