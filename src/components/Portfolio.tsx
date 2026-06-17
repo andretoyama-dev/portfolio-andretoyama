@@ -128,11 +128,12 @@ export default function Portfolio() {
     >
       {/* Hero Section */}
       <section className="max-w-4xl mx-auto space-y-8 relative">
-        {/* Cyberdeck Audio Deck */}
-        <motion.div 
-          variants={itemVariants}
-          className="absolute -top-20 md:-top-2 right-0 z-50 w-[280px] font-mono text-[10px] bg-black/90 border border-brand-red/20 p-3 rounded-sm space-y-2.5 shadow-[0_0_15px_rgba(220,38,38,0.05)] hover:border-brand-red/50 transition-all select-none"
-        >
+        {/* Audio Console Header */}
+        <div className="flex justify-end w-full pb-2">
+          <motion.div 
+            variants={itemVariants}
+            className="w-[280px] font-mono text-[10px] bg-black/90 border border-brand-red/20 p-3 rounded-sm space-y-2.5 shadow-[0_0_15px_rgba(220,38,38,0.05)] hover:border-brand-red/50 transition-all select-none"
+          >
           {/* Header */}
           <div className="flex items-center justify-between border-b border-brand-red/10 pb-1 text-[8px] text-gray-500 uppercase tracking-widest">
             <span>System_Audio // Dev_Resonance</span>
@@ -199,6 +200,7 @@ export default function Portfolio() {
             </div>
           </div>
         </motion.div>
+      </div>
 
         <motion.div variants={itemVariants} className="space-y-2 group relative z-10">
           <div className="flex items-center space-x-2 text-brand-red/50 mb-4 font-mono text-[10px] tracking-[0.3em] uppercase">
