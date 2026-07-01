@@ -297,11 +297,11 @@ export default function Portfolio() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="p-3 md:p-4 bg-white/5 border border-white/10 rounded-sm">
                   <span className="block text-[8px] font-mono text-brand-red uppercase mb-1">Max_Velocity</span>
-                  <span className="text-base md:text-xl font-bold text-white tracking-wide">50 KM/H</span>
+                  <span className="text-xs sm:text-base md:text-xl font-bold text-white tracking-wide">50 KM/H</span>
                 </div>
                 <div className="p-3 md:p-4 bg-white/5 border border-white/10 rounded-sm">
                   <span className="block text-[8px] font-mono text-brand-red uppercase mb-1">Armor_Type</span>
-                  <span className="text-base md:text-xl font-bold text-white tracking-wide">OSTEODERMS</span>
+                  <span className="text-xs sm:text-base md:text-xl font-bold text-white tracking-wide">OSTEODERMS</span>
                 </div>
               </div>
               
