@@ -5,7 +5,6 @@
 **Personal developer portfolio with a cyberpunk aesthetic, interactive 3D models, and ambient music.**
 
 [![Live Site](https://img.shields.io/badge/Live-andretoyama--dev.com.br-ff003c?style=for-the-badge&logo=firefoxbrowser&logoColor=white)](https://andretoyama-dev.com.br)
-[![GitHub Pages](https://img.shields.io/badge/deploy-GitHub%20Pages-222?style=for-the-badge&logo=github&logoColor=white)](https://github.com/andretoyama-dev/portfolio-andretoyama/actions)
 
 </div>
 
